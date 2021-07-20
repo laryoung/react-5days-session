@@ -6,3 +6,5 @@ class Animal{
         this.head = head;
     }
 }
+
+obj = new Animal('black', 'small');

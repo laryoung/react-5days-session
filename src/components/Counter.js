@@ -1,10 +1,18 @@
-import React, { Component } from 'react'
+import React from 'react'
+import BioData from './BioData'
+import EduData from './EduData';
 
-export default class Counter extends Component {
-   
+export default class Counter extends React.Component {
+  
     state = {
-        price: 40,
+        step: 1
     }
+    
+    //  getEmail = (e) => {
+   //     this.setState({email:e.target.value})
+    // }
+
+    // const [price, setPrice] = useState(0);
 //     constructor(props){
 //        super(props);
 //        this.state = {
@@ -17,24 +25,24 @@ export default class Counter extends Component {
     //         count : 42
     //     }
 
-    
-    // handleIncrement(){
-    //     this.setState({count: this.state.count+1})
-    // }
-    
+    // Arrow function to increase the state property 
+    // which is step by 1
+    handleIncrement = () => (
+        this.setState({step: this.state.step + 1})
+    )
     
    
+    
 
     render() {
-    
-        return (
-            <div>
-               {/* <h2>{this.state.count}</h2> */}
-                {/* <button onClick={()=> this.handleIncrement()}>Click</button> */}
-
-                <h1>{this.state.price}</h1>                    
-            </div>
-        )
+        switch (this.state.step){
+        case 1:
+            return <BioData increaseStep={this.handleIncrement}/>;
+        case 2:
+            return <EduData />;
+        default:
+            return null;
+        }
     }
 }
 
